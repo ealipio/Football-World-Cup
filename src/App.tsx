@@ -1,5 +1,18 @@
+import React from 'react';
+
 function App() {
-  return <div className="">Hello!</div>;
+  const [count, setCount] = React.useState(0);
+
+  return (
+    <div className="">
+      <span>Hello!</span>
+      <div>
+        <button type="button" onClick={(e) => setCount(count + 1)}>
+          count is: {count}
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default App;
