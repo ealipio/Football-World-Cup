@@ -1,24 +1,22 @@
 import React from 'react';
 
+import { page } from './store/gameStore';
+import { Navbar } from './components/Navbar';
+import { Summary } from './components/Summary';
+import { Settings } from './components/Settings';
+
 function App() {
-  const [count, setCount] = React.useState(0);
+  const [page, setPage] = React.useState<page>('summary');
+
+  const handleSelectPage = (pageSelected: page) => {
+    setPage(pageSelected);
+  };
 
   return (
-    <div className="">
-      <span>Hello!</span>
-      <h1 className="bg-green-600 text-3xl font-bold underline">
-        Hello world!
-      </h1>
-      <div>
-        <button
-          className="bg-blue-600 text-white"
-          type="button"
-          onClick={(e) => setCount(count + 1)}
-        >
-          count is: {count}
-        </button>
-      </div>
-    </div>
+    <>
+      <Navbar onSelectPage={handleSelectPage} />
+      {page === 'summary' ? <Summary /> : <Settings />}
+    </>
   );
 }
 
