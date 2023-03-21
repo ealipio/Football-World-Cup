@@ -1,8 +1,11 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type page = 'summary' | 'settings';
+export type page = 'results' | 'manage';
 
+export const DEFAULT_PAGE: page = 'results';
+
+export const pages: page[] = ['results', 'manage'];
 interface IGameStore {
   versus: [];
   addGame: () => void;

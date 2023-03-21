@@ -1,16 +1,15 @@
 import React from 'react';
 
-import { page } from '../store/gameStore';
+import { page, pages, DEFAULT_PAGE } from '../store/gameStore';
 
 interface INavBar {
   onSelectPage: (parameter: page) => void;
 }
 
-const INITIAL_PAGE = 'summary';
-
 export const Navbar: React.FC<INavBar> = ({ onSelectPage }) => {
+  const [resultsPage, managePage] = pages;
   const [selectedMenuItem, setSelectedMenuItem] =
-    React.useState<page>(INITIAL_PAGE);
+    React.useState<page>(DEFAULT_PAGE);
 
   const handleSelectPage = (
     e: React.MouseEvent<HTMLLIElement, MouseEvent> & { target: HTMLLIElement }
@@ -25,21 +24,21 @@ export const Navbar: React.FC<INavBar> = ({ onSelectPage }) => {
       <ul className="flex items-center justify-between h-full px-10">
         <li
           onClick={handleSelectPage}
-          id="summary"
+          id={resultsPage}
           className={`cursor-pointer ${
-            selectedMenuItem === 'summary' ? 'text-red-600' : ''
+            selectedMenuItem === resultsPage ? 'text-red-600' : ''
           }`}
         >
-          Summary
+          Results
         </li>
         <li
           onClick={handleSelectPage}
-          id="settings"
+          id={managePage}
           className={`cursor-pointer ${
-            selectedMenuItem === 'settings' ? 'text-red-600' : ''
+            selectedMenuItem === managePage ? 'text-red-600' : ''
           }`}
         >
-          Settings
+          Manage
         </li>
       </ul>
     </nav>

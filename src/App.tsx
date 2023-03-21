@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { page } from './store/gameStore';
 import { Navbar } from './components/Navbar';
-import { Summary } from './components/Summary';
-import { Settings } from './components/Settings';
+import { Results } from './components/Results';
+import { Manage } from './components/Manage';
+import { page, DEFAULT_PAGE } from './store/gameStore';
 
 function App() {
-  const [page, setPage] = React.useState<page>('summary');
+  const [page, setPage] = React.useState<page>(DEFAULT_PAGE);
 
   const handleSelectPage = (pageSelected: page) => {
     setPage(pageSelected);
@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <Navbar onSelectPage={handleSelectPage} />
-      {page === 'summary' ? <Summary /> : <Settings />}
+      {page === DEFAULT_PAGE ? <Results /> : <Manage />}
     </>
   );
 }
