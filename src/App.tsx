@@ -6,8 +6,15 @@ function App() {
   return (
     <div className="">
       <span>Hello!</span>
+      <h1 className="bg-green-600 text-3xl font-bold underline">
+        Hello world!
+      </h1>
       <div>
-        <button type="button" onClick={(e) => setCount(count + 1)}>
+        <button
+          className="bg-blue-600 text-white"
+          type="button"
+          onClick={(e) => setCount(count + 1)}
+        >
           count is: {count}
         </button>
       </div>
