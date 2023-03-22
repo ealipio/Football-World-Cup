@@ -20,13 +20,13 @@ export const Navbar: React.FC<INavBar> = ({ onSelectPage }) => {
   };
 
   return (
-    <nav className="h-10 bg-gray-300 text-black">
-      <ul className="flex items-center justify-between h-full px-10">
+    <nav className="h-10 bg-slate-900 text-white">
+      <ul className="flex items-center justify-between h-full px-10 uppercase">
         <li
           onClick={handleSelectPage}
           id={resultsPage}
           className={`cursor-pointer ${
-            selectedMenuItem === resultsPage ? 'text-red-600' : ''
+            selectedMenuItem === resultsPage ? 'text-emerald-400' : ''
           }`}
         >
           Results
@@ -35,7 +35,7 @@ export const Navbar: React.FC<INavBar> = ({ onSelectPage }) => {
           onClick={handleSelectPage}
           id={managePage}
           className={`cursor-pointer ${
-            selectedMenuItem === managePage ? 'text-red-600' : ''
+            selectedMenuItem === managePage ? 'text-emerald-400' : ''
           }`}
         >
           Manage
