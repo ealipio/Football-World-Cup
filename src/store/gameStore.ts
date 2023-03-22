@@ -38,8 +38,6 @@ interface IGameStore {
   updateGame: (game: IGame) => void;
   finishGame: (gameId: number) => void;
 }
-// <img src="https://flagsapi.com/BE/flat/64.png">
-
 export const useGameStore = create<IGameStore>()(
   persist(
     (set) => ({
