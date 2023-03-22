@@ -21,11 +21,11 @@ export const Navbar: React.FC<INavBar> = ({ onSelectPage }) => {
 
   return (
     <nav className="h-10 bg-slate-900 text-white">
-      <ul className="flex items-center justify-between h-full px-10 uppercase">
+      <ul className="flex items-center justify-center h-full px-10 uppercase">
         <li
           onClick={handleSelectPage}
           id={resultsPage}
-          className={`cursor-pointer ${
+          className={` mx-10 cursor-pointer ${
             selectedMenuItem === resultsPage ? 'text-emerald-400' : ''
           }`}
         >

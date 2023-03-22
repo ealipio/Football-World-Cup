@@ -39,13 +39,6 @@ export const Manage: React.FC = () => {
     });
 
     const IsAlreadyInStore = gameIsAlreadyInStore.length > 0;
-    console.log({
-      IsAlreadyInStore,
-      gameIsAlreadyInStore,
-      games,
-      home: home,
-      away: away,
-    });
     return hasBothTeams && areDifferentTeams && !IsAlreadyInStore;
   };
 
@@ -54,9 +47,9 @@ export const Manage: React.FC = () => {
     if (isValidGame) {
       const id = new Date().getTime();
       saveGame({ ...game, id });
-    } else {
-      setIsSaveDisabled(!isValidGame);
     }
+    // disabled after save since selector keeps state
+    setIsSaveDisabled(isValidGame);
   };
   const handleChangeCountry = (country: ICountry, teamType: string) => {
     const newGame = {
