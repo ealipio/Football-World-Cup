@@ -22,7 +22,7 @@ export const GameList: React.FC<IGameListProps> = () => {
     };
   return (
     <div className="m-4 my-6">
-      <h1 className="uppercase font-bold m-2">Game List:</h1>
+      <h1 className="uppercase font-bold m-2 mb-6">Game List:</h1>
 
       {games.map((game) => {
         return (
@@ -31,7 +31,9 @@ export const GameList: React.FC<IGameListProps> = () => {
             className="flex justify-between items-center gap-4 mb-2 text-slate-500"
           >
             <div className="flex">
-              <span className="mx-2 w-60 text-sm">{game.home.name}</span>
+              <span className="mx-2 uppercase w-60 text-sm">
+                {game.home.name}
+              </span>
               <input
                 type="number"
                 min={INITIAL_SCORE}
@@ -46,7 +48,9 @@ export const GameList: React.FC<IGameListProps> = () => {
             </div>
 
             <div className=" flex">
-              <span className="mx-2 w-60 text-sm">{game.away.name}</span>
+              <span className="mx-2 uppercase w-60 text-sm">
+                {game.away.name}
+              </span>
               <input
                 type="number"
                 min={INITIAL_SCORE}
@@ -54,11 +58,9 @@ export const GameList: React.FC<IGameListProps> = () => {
                 onChange={handleChangeHome(game, 'away')}
                 className="border w-12 text-center"
               />
-            </div>
-            <div className="flex">
               <button
                 onClick={handleFinishGame(game.id)}
-                className="border bg-indigo-500 text-white uppercase py-1 px-2 rounded hover:bg-indigo-600 font-bold text-xs"
+                className=" mx-6 border bg-indigo-500 text-white uppercase py-1 px-2 rounded hover:bg-indigo-600 font-bold text-xs"
               >
                 finish
               </button>

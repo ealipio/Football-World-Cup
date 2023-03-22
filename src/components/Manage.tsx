@@ -61,7 +61,7 @@ export const Manage: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-10">
       <div className="mb-4">
         <button
           onClick={handleStartGame}
