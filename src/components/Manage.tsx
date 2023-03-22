@@ -67,7 +67,7 @@ export const Manage: React.FC = () => {
           onClick={handleStartGame}
           className={`${
             startGame && 'hidden'
-          } bg-indigo-500 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded border  uppercase w-full md:w-auto `}
+          } bg-indigo-500 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded border  uppercase`}
         >
           start game
         </button>
