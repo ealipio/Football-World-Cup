@@ -26,12 +26,16 @@ export const Selector: React.FC<ISelectorProps> = ({
   return (
     <div className="flex flex-wrap">
       <div className="w-full px-3 mb-6 md:mb-0">
-        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-          {teamType} Team
+        <label
+          htmlFor={teamType}
+          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        >
+          {teamType} team
         </label>
         <div className="relative">
           <select
             onChange={handleChangeCountry}
+            id={teamType}
             defaultValue={''}
             className="block appearance-none w-full text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white border border-gray-200 focus:border-gray-600"
           >

@@ -27,9 +27,9 @@ export const Results: React.FC = () => {
             key={game.id}
             className="flex justify-evenly items-center mb-2 text-slate-600  bg-sky-100 shadow"
           >
-            <CountryFlag team={game.home} />
+            <CountryFlag altText="home" team={game.home} />
             <Scores game={game} />
-            <CountryFlag team={game.away} />
+            <CountryFlag altText="away" team={game.away} />
           </div>
         );
       })}

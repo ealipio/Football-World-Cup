@@ -22,7 +22,9 @@ export const GameList: React.FC<IGameListProps> = () => {
     };
   return (
     <div className="m-4 my-6">
-      <h1 className="uppercase font-bold m-2 mb-6">Game List:</h1>
+      {games.length > 0 && (
+        <h1 className="uppercase font-bold m-2 mb-6">Game List:</h1>
+      )}
 
       {games.map((game) => {
         return (
