@@ -5,69 +5,72 @@ describe('App component', () => {
   beforeEach(() => {
     render(<App />);
   });
-  test('when user go to page first time a message should appear', () => {
-    const text = screen.getByText(
+
+  test('displays a message when the user visits the page for the first time', () => {
+    const message = screen.getByText(
       /no games provided, go to section and add a new game ☝/i
     );
-    expect(text).toBeInTheDocument();
+    expect(message).toBeInTheDocument();
   });
 
-  test('should contain RESULTS section in navbar', async () => {
-    const element = screen.getByText(/results/i);
-    expect(element).toBeInTheDocument();
-  });
-  test('should contain MANAGE section in navbar', async () => {
-    const list = screen.getByRole('list');
-    const element = within(list).getByText(/manage/i);
-    expect(element).toBeInTheDocument();
-  });
-  test('when user click on manage start game button should appear', () => {
-    const list = screen.getByRole('list');
-    const manageElement = within(list).getByText(/manage/i);
-    fireEvent.click(manageElement);
-    const startGameButton = screen.getByRole('button', {
-      name: /start game/i,
-    });
-    expect(startGameButton).toBeInTheDocument();
-  });
-  test('click on start game button show country select and save and close buttons', () => {
-    const list = screen.getByRole('list');
-    const manageElement = within(list).getByText(/manage/i);
-    fireEvent.click(manageElement);
-    const startGameButton = screen.getByRole('button', {
-      name: /start game/i,
-    });
-    fireEvent.click(startGameButton);
-    const saveBtn = screen.getByRole('button', {
-      name: /save/i,
-    });
-    expect(saveBtn).toBeInTheDocument();
-    const closeBtn = screen.getByRole('button', {
-      name: /close/i,
-    });
-    expect(closeBtn).toBeInTheDocument();
-  });
-  test('adding a new game', () => {
-    const list = screen.getByRole('list');
-    const manageElement = within(list).getByText(/manage/i);
-    fireEvent.click(manageElement);
-    const startGameButton = screen.getByRole('button', {
-      name: /start game/i,
-    });
-    fireEvent.click(startGameButton);
-    // select
-    const homeSelect = screen.getByLabelText(/home Team/i);
-    fireEvent.change(homeSelect, { target: { value: 'PE' } });
-
-    const awaySelect = screen.getByLabelText(/away team/i);
-    fireEvent.change(awaySelect, { target: { value: 'BR' } });
-
-    const saveBtn = screen.getByRole('button', {
-      name: /save/i,
+  describe('navbar', () => {
+    test('contains a "RESULTS" section', () => {
+      const resultsLink = screen.getByText(/results/i);
+      expect(resultsLink).toBeInTheDocument();
     });
 
-    fireEvent.click(saveBtn);
+    test('contains a "MANAGE" section', () => {
+      const manageList = screen.getByRole('list');
+      const manageLink = within(manageList).getByText(/manage/i);
+      expect(manageLink).toBeInTheDocument();
+    });
   });
+
+  describe('manage section', () => {
+    beforeEach(() => {
+      const manageList = screen.getByRole('list');
+      const manageLink = within(manageList).getByText(/manage/i);
+      fireEvent.click(manageLink);
+    });
+
+    test('displays a "Start Game" button', () => {
+      const startGameButton = screen.getByRole('button', {
+        name: /start game/i,
+      });
+      expect(startGameButton).toBeInTheDocument();
+    });
+
+    test('clicking "Start Game" displays the country select and save and close buttons', () => {
+      const startGameButton = screen.getByRole('button', {
+        name: /start game/i,
+      });
+      fireEvent.click(startGameButton);
+      const saveButton = screen.getByRole('button', {
+        name: /save/i,
+      });
+      const closeButton = screen.getByRole('button', {
+        name: /close/i,
+      });
+      expect(saveButton).toBeInTheDocument();
+      expect(closeButton).toBeInTheDocument();
+    });
+
+    test('adding a new game displays the "Game List" label', () => {
+      const startGameButton = screen.getByRole('button', {
+        name: /start game/i,
+      });
+      fireEvent.click(startGameButton);
+      const homeSelect = screen.getByLabelText(/home team/i);
+      const awaySelect = screen.getByLabelText(/away team/i);
+      const saveButton = screen.getByRole('button', { name: /save/i });
+      fireEvent.change(homeSelect, { target: { value: 'PE' } });
+      fireEvent.change(awaySelect, { target: { value: 'BR' } });
+      fireEvent.click(saveButton);
+      const gameListLabel = screen.getByText(/game list/i);
+      expect(gameListLabel).toBeInTheDocument();
+    });
+  });
+
   test('after add a game, results page have an image flag for away and home team', () => {
     // results
     const homeImg = screen.getByRole('img', {
@@ -81,7 +84,7 @@ describe('App component', () => {
     expect(homeImg).toBeInTheDocument();
     expect(awayImg).toBeInTheDocument();
   });
-  test('Results Page: initial score assigned for each team is 0', () => {
+  test('initial score assigned for each team in Results Page is 0', () => {
     const vs = screen.getByText(/0 0/i);
     expect(vs).toBeInTheDocument();
   });

@@ -1,11 +1,13 @@
 import { CountryFlag } from './CountryFlag';
-import { INITIAL_GAME } from '../../store/gameStore';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-describe('CountryFlag component', () => {
-  test.todo('should render country name', () => {
-    render(<CountryFlag altText="home" team={INITIAL_GAME.away} />);
+describe('CountryFlag', () => {
+  test('renders team name', () => {
+    const team = {
+      name: 'Spain',
+      code: 'ES',
+    };
+    const { getByText } = render(<CountryFlag team={team} altText="flag" />);
+    expect(getByText('Spain')).toBeInTheDocument();
   });
-
-  test.todo('should render an image', () => {});
 });

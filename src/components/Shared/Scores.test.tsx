@@ -2,11 +2,23 @@ import { Scores } from './Scores';
 import { INITIAL_GAME } from '../../store/gameStore';
 import { render, screen } from '@testing-library/react';
 
-describe('Scores component', () => {
-  test.todo('should render home score', () => {
-    render(<Scores game={INITIAL_GAME} />);
-  });
+const game = {
+  id: 1,
+  home: {
+    name: 'Peru',
+    code: 'PE',
+    score: 5,
+  },
+  away: {
+    name: 'Brazil',
+    code: 'BR',
+    score: 2,
+  },
+};
 
-  test.todo('should render away team score', () => {});
-  test.todo('should render :', () => {});
+describe('Scores component', () => {
+  test('should render the scores for the home and away teams', () => {
+    const { getByText } = render(<Scores game={game} />);
+    expect(getByText(/5 2/i)).toBeInTheDocument();
+  });
 });
