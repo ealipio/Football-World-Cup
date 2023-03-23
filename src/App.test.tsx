@@ -12,16 +12,16 @@ describe('App component', () => {
     expect(text).toBeInTheDocument();
   });
 
-  test('should contain RESULTS section', async () => {
+  test('should contain RESULTS section in navbar', async () => {
     const element = screen.getByText(/results/i);
     expect(element).toBeInTheDocument();
   });
-  test('should contain MANAGE section', async () => {
+  test('should contain MANAGE section in navbar', async () => {
     const list = screen.getByRole('list');
     const element = within(list).getByText(/manage/i);
     expect(element).toBeInTheDocument();
   });
-  test('when user click on manage', () => {
+  test('when user click on manage start game button should appear', () => {
     const list = screen.getByRole('list');
     const manageElement = within(list).getByText(/manage/i);
     fireEvent.click(manageElement);
@@ -75,13 +75,13 @@ describe('App component', () => {
     });
 
     const awayImg = screen.getByRole('img', {
-      name: /home/i,
+      name: /away/i,
     });
 
     expect(homeImg).toBeInTheDocument();
     expect(awayImg).toBeInTheDocument();
   });
-  test('initial score assigned for each team is 0', () => {
+  test('Results Page: initial score assigned for each team is 0', () => {
     const vs = screen.getByText(/0 0/i);
     expect(vs).toBeInTheDocument();
   });
