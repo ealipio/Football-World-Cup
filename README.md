@@ -1,11 +1,16 @@
 ### Run Locally
 
-Football World Cup Score Board
+```
+1. clone the repo
+2. install dependencies with pnpm: pnpm i
+3. run: pnpm dev
+```
+
+### Coding Exercise
+
 You are working on a sports data company, and we would like you to develop a new Live
 Football World Cup Score Board that shows matches and scores.
 The board supports the following operations:
-
-### Coding Exercise
 
 Please provide the implementation of the Football World Cup Score Board as a simple library.
 
@@ -29,9 +34,3 @@ Please provide the implementation of the Football World Cup Score Board as a sim
 7. Mexico 0 - Canada 5
 8. Argentina 3 - Australia 1
 9. Germany 2 - France 2
-
-```
-1. clone the repo
-2. install dependencies with pnpm: pnpm i
-3. run: pnpm dev
-```
